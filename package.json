@@ -1,0 +1,26 @@
+{
+  "name": "bit_jobchange",
+  "version": "1.0.0",
+  "description": "` npm i -g truffle `",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mositori/bit_jobchange.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/mositori/bit_jobchange/issues"
+  },
+  "homepage": "https://github.com/mositori/bit_jobchange#readme"
+}
