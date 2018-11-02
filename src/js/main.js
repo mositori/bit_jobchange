@@ -71,9 +71,16 @@ function init(){
 
 // Functions based on CorpToken.sol
 // mintAndTransfer
-function mintAndTransfer(_to, _eventId, _skill, _personallity, _date){
+function mintAndTransfer(){
+  
+  const _to = document.getElementById("_to").value;
+  const _eventId = document.getElementById("_eventId").value;
+  const _skill = document.getElementById("_skill").value;
+  const _personality = document.getElementById("_personality").value;
+  const _date = document.getElementById("_date").value;
+
   corpTokenContract.mintAndTransfer.sendTransaction(
-    _to, _eventId, _skill, _personallity, _date,
+    _to, _eventId, _skill, _personality, _date,
     {from:userAccount, gas:1000000},
     (err,res) => {
       if(!err){
