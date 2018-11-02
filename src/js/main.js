@@ -68,6 +68,7 @@ function init(){
 }
 
 
+
 // Functions based on CorpToken.sol
 // mintAndTransfer
 function mintAndTransfer(_to, _eventId, _skill, _personallity, _date){
@@ -96,9 +97,16 @@ function getToken(_owner){
 
 //return the token's contents
 function getDetailOfToken(_tokenId){
-  corpTokenContract.getDetailOfToken.call(_tokenId, (err,res) => {
+  corpTokenContract.getDetailOfToken(_tokenId, (err,res) => {
     if(!err){
-      console.log(res);
+      const _eventId = res[0];
+      const _skill = res[1];
+      const _personality = res[2];
+      const _date = res[3];
+      document.getElementById("corpToken-eventId").textContent = _eventId;
+      document.getElementById("corpToken-skill").textContent = _skill;
+      document.getElementById("corpToken-personality").textContent = _personality;
+      document.getElementById("corpToken-date").textContent = _date;
     }else{
       console.log(err);
     }

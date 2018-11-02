@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>bit-jobchange</title>
+        <!-- loading css -->
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <!-- loading jquery and main.js -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="./js/main.js" type="text/javascript"></script>
-        <script>
-
-        </script>
     </head>
     <body>
-        <div class="header">
+        <header>
             <div class="header-logo">Bit転職</div>
             <div class="header-menu">
                 <ul>
@@ -19,6 +19,19 @@
                     <li>マイページ</li>
                 </ul>
             </div>
-        </div>
+        </header>
+        
+        <h3>法人トークンの作成</h3>
+        
+
+        <h3>現在取得している法人トークンを表示します。</h3>
+
+        <div id="corpToken-eventId">イベント</div>
+        <div id="corpToken-skill">スキル</div>
+        <div id="corpToken-personality">パーソナリティ</div>
+        <div id="corpToken-date">日付</div>
+
+        <input type="button" value="Get Detail of CorpToken" onclick="getDetailOfToken(0)">
+
     </body>
 </html>
