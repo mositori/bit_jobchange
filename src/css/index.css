@@ -1,10 +1,16 @@
 body {
   font-family: "Avenir Next";
+  margin-left:0px!important;
+  margin-top:130px;
+  background-color: #FAFAFA;
 }
 
 header {
-  background-color: #666666;
+  background-color: #74A9D6;
   height: 90px;
+  width: 100%;
+  position:fixed;
+  top:0px;
 }
 
 
@@ -12,6 +18,7 @@ header {
   float: left;
   font-size: 36px;
   padding: 20px 40px;
+  color:#fafafa;
 }
 
 .header-menu{
@@ -21,7 +28,15 @@ header {
 
 .header-menu li{
   float: left;
+  text-align: center;
   padding: 20px 20px;
+  background-color: #1987E5;
+}
+.header-menu li:nth-of-type(3){
+  background-color: #0B2BD7;
+}
+.header-menu li > a{
+  color:#FAFAFA;
 }
 
 .token {
@@ -32,4 +47,38 @@ header {
 
 li {
   list-style: none;
+}
+
+.profile{
+  display: flex;
+  flex-direction: row;
+  margin-left:20px;
+}
+.name-area{
+  display: flex;
+  flex-direction: row;
+}
+.name-area > div{
+  margin:5px;
+}
+.portrait{
+  width:300px;
+  height:300px;
+  margin:10px;
+}
+.description > li{
+  margin: 5px;
+  padding: 5px;
+  border: solid grey 3px;
+}
+
+.form{
+  margin:auto;
+  text-align: center;
+  width: 300px;
+  border: solid grey 3px;
+  padding: 10px;
+}
+.token-title{
+  text-align: center;
 }

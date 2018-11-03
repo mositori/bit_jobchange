@@ -24,26 +24,28 @@
         </div>
       </div>
     </header>
-
+    
     <!-- これは「ピア評価用」フォームです。メソッドの全てにUSERが付いていることを確認。 -->
     <!-- トークン情報入力フォーム -->
     <div class="form">
-      <div class="token-title"> 履歴入力 </div>
+      <div class="token-title"> ピア評価 </div>
       <form name="param" action="#">
-      <div class=""></div>
-          <p class="item">To</p>
-          <input type="text" id="_toUSER" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
-
-          <p class="item">Skill</p>
-          <input type="text" id="_skillUSER">
-
-          <p class="item">Personality</p>
-          <input type="text" id="_personalityUSER">
-
-          <input type="button" value="Mint & Transfer" onClick="mintAndTransfer_USER()" class="send-button">
+        <div class=""></div>
+        <p class="item">To</p>
+        <input type="text" id="_toUSER" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
+        
+        <p class="item">Skill</p>
+        <input type="text" id="_skillUSER">
+        
+        <p class="item">Personality</p>
+        <input type="text" id="_personalityUSER">
+        
+        <input type="button" value="Mint & Transfer" onClick="mintAndTransfer_USER()" class="send-button">
       </form>
     </div>
-
-
+    
+    <p>Yout Address:</p>
+    <div class="address"> now loading... </div> <!-- accountAddress で置換 -->
+    
   </body>
-</html>
+  </html>

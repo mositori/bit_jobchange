@@ -19,8 +19,6 @@
   </head>
 
   <body>
-    <div id="test">0</div>
-
     <header>
       <div class="header-logo">Bit転職</div>
         <div class="header-menu">
@@ -36,7 +34,7 @@
     <!-- [注意] これは「履歴登録用」フォームです。mintAndTransfer()注意 -->
     <!-- トークン情報入力フォーム -->
     <div class="form">
-      <div class="token-title"> 履歴入力 </div>
+      <div class="token-title"> 履歴登録 </div>
       <form name="param" action="#">
       <div class=""></div>
           <p class="item">To</p>
@@ -48,14 +46,18 @@
           <p class="item">Date</p>
           <input type="text" id="_date">
 
+          <p class="item">Skill</p>
           <p class="total-skill">0</p>
+
+          <p class="item">Personality</p>
           <p class="total-personality">0</p>
           <input type="button" onclick="displayTotal()">
 
           <input type="button" value="Mint & Transfer" onClick="mintAndTransfer()" class="send-button">
       </form>
     </div>
-
+    <p>Yout Address:</p>
+    <div class="address"> now loading... </div> <!-- accountAddress で置換 -->
 
   </body>
 </html>
