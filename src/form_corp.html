@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html land="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>bit-jobchange</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>bit-jobchange</title>
 
         <!-- loading css -->
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 
         <!-- loading jquery and main.js -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="./js/main.js" type="text/javascript"></script>
-    </head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/main.js" type="text/javascript"></script>
+  </head>
 
-    <body>
-        <header>
-            <div class="header-logo">Bit転職</div>
-            <div class="header-menu">
-                <ul>
-                    <li>履歴作成(法人のみ)</li>
-                    <li>コイン送付</li>
-                    <li>マイページ</li>
-                </ul>
-            </div>
-        </header>
-        <div class="profile">
-            <div class="name-area">
-                <div class="name"> Shimotori Keisuke </div>
-                <div class="address"> now loading... </div> <!-- accountAddress で置換 -->
-            </div>
-
-            <img src="" class="portrait" />
-            
-            <div class="description"> <!-- BirthDate, Occupations, Age, Self-Description -->
-                <li class="birthDate"></li>
-                <li class="Occupations"></li>
-                <li class="Age"></li>
-                <li class="Self-Description"></li>
-            </div>
+  <body>
+    <header>
+      <div class="header-logo">Bit転職</div>
+        <div class="header-menu">
+          <ul>
+            <li><a href="./form_corp.html">履歴作成(法人のみ)</a></li>
+            <li><a href="./form_user.html">ピア評価</a></li>
+            <li><a href="./index.html">マイページ</a></li>
+          </ul>
         </div>
+      </div>
+    </header>
 
 
-        <div class="work-experience">
-            <div class="work-experience-title"> Work Experience </div>
-            <div class="tokens"> <!-- jQueryで自動的に中身が更新される = 空白でOK -->
-            </div>
-        </div>
-    </body>
+    <!-- トークン情報入力フォーム -->
+    <div class="form">
+      <div class="token-title"> 履歴入力 </div>
+      <form name="param" action="#">
+      <div class=""></div>
+          <p class="item">宛先</p>
+          <input type="text" id="_toUSER" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
+
+          <p class="item">Skill</p>
+          <input type="text" id="_skillUSER">
+
+          <p class="item">Personality</p>
+          <input type="text" id="_personalityUSER">
+
+          <input type="button" value="Mint & Transfer" onClick="mintAndTransfer_USER()" class="send-button">
+      </form>
+    </div>
+
+
+  </body>
 </html>
