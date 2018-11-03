@@ -24,7 +24,7 @@
         <h3>法人トークンの作成</h3>
         <form name="param" action="#">
             <p>宛先</p>
-            <input type="text" id="_to">
+            <input type="text" id="_to" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
             <p>イベントID</p>
             <input type ="text" id="_eventId">
             <p>Skill</p>
@@ -33,7 +33,7 @@
             <input type="text" id="_personality">
             <p>Date</p>
             <input type="text" id="_date">
-            
+
             <input type="button" value="Mint & Transfer" onClick="mintAndTransfer()">
         </form>
 
@@ -46,6 +46,18 @@
         <div id="corpToken-date">日付</div>
 
         <input type="button" value="Get Detail of CorpToken" onclick="getDetailOfToken(0)">
+
+
+        <div class="tokens">
+            <div class="token">
+                <ul>
+                    <li>April</li>
+                    <li>EMURGO株式会社</li>
+                    <li>入社</li>
+                </ul>
+            </div>
+        </div>
+
 
     </body>
 </html>

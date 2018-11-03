@@ -6,6 +6,9 @@ let tokenContract;
 let corpTokenContract;
 let userAccount = "";
 let guestAddress = "";
+let idToCompanyName = {"0x1dFb73D1f3117401b240d2F1879f3D1ff6948f29":"EMURGO"}
+
+let idsTemp;
 
 var accountInterval = setInterval(function(){
   if(web3js.eth.accounts[0] !== userAccount){
@@ -13,6 +16,9 @@ var accountInterval = setInterval(function(){
   }
 },100)
 
+var refreshTokenDetail = setInterval(function(){
+  getTokenId(userAccount, getDetailOfToken_);
+},1000)
 
 init();
 
@@ -92,34 +98,77 @@ function mintAndTransfer(){
 }
 
 //return array including tokenId whose owner has.
-function getToken(_owner){
-  corpTokenContract.getToken.call(_owner, (err,res) => {
+//function getToken(_owner, cb) {
+//  response = {};
+//
+//  corpTokenContract.getToken(_owner, (err, res) => {
+//    if(!err){
+//      console.log(res);
+//      response = res;
+//      cb(res);
+//    }else{
+//      console.log(err);
+//    }
+//  });
+//
+//  return resposne;
+//}
+
+function getTokenId(_owner,callback){
+  corpTokenContract.getToken(_owner, (err,res) => {
     if(!err){
       console.log(res);
+      callback(res);
     }else{
       console.log(err);
     }
   })
 }
+
+function getDetailOfToken_(ids){
+  if(idsTemp !== ids){
+    $(".tokens").empty();
+    for(id of ids){
+      getDetailOfToken(id);
+    }
+  }
+  idsTemp = ids;
+}
+
 
 //return the token's contents
 function getDetailOfToken(_tokenId){
   corpTokenContract.getDetailOfToken(_tokenId, (err,res) => {
     if(!err){
-      const _eventId = res[0];
-      const _skill = res[1];
-      const _personality = res[2];
-      const _date = res[3];
-      document.getElementById("corpToken-eventId").textContent = _eventId;
-      document.getElementById("corpToken-skill").textContent = _skill;
-      document.getElementById("corpToken-personality").textContent = _personality;
-      document.getElementById("corpToken-date").textContent = _date;
+      const _from = res[0];
+      const _eventId = res[1];
+      const _skill = res[2];
+      const _personality = res[3];
+      const _date = res[4];
+      const _company = idToCompanyName[_from];
+      if(_eventId == 0){
+
+      }if(_eventId == 2){
+        $(".tokens").append(`<div class="token">
+          <ul>
+            <li div class="skill"> Skill: ${_skill} </li>
+            <li div class="personality"> Personality: ${_personality} </li>
+            <li div class="date"> Date: ${_date} </li>
+            <li div class="company"> Company: ${_company} </li>
+            <li div class="event"> Event: ${_eventId} </li>
+          </ul>
+        </div>`);
+      }
+
+      //document.getElementById("corpToken-eventId").textContent = _eventId;
+      //document.getElementById("corpToken-skill").textContent = _skill;
+      //document.getElementById("corpToken-personality").textContent = _personality;
+      //document.getElementById("corpToken-date").textContent = _date;
     }else{
       console.log(err);
     }
   })
 }
-
 
 // Functions based on Token.sol
 

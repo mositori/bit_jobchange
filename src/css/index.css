@@ -24,8 +24,12 @@ header {
   padding: 20px 20px;
 }
 
+.token {
+  font-size: 24px;
+  display: inline-flex;
+  flex-direction: row;
+}
 
 li {
   list-style: none;
 }
-
