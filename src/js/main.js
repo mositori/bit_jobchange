@@ -13,9 +13,10 @@ let before;
 
 // setIntervals
 var accountInterval = setInterval(function(){
+  $(".address").text(userAccount);
   if(web3js.eth.accounts[0] !== userAccount){
     userAccount = web3js.eth.accounts[0];
-  }
+  };
 },100);
 
 var refreshTokenDetail = setInterval(function(){
@@ -75,7 +76,7 @@ function init(){
   .then(function(){
     tokenContract = web3js.eth.contract(abi).at(address);
     console.log("Token.sol setting complete!")
-  })
+  });
 }
 
 
@@ -212,35 +213,34 @@ function getTokenId_USER(_owner, callback){
     }else{
       console.log(err);
     }
-  })
+  });
 }
 
 function getDetailOfToken_USER(ids){
   let totalSkill = 0;
   let totalPersonality = 0;
+  let _skill = 0;
+  let _personality = 0;
   console.log(ids);
+
   for(id of ids){
-    tokenContract.getDetailOfToken_USER(id, (err,res) => {
+    id_ = id["c"][0];
+    tokenContract.getDetailOfToken_USER(id_, (err,res) => {
       if(!err){
-        let _skill = res[0];
-        let _personality = [1];
+        console.log("res"+ res);
+
+        _skill = res[0]["c"][0];
+        _personality = res[1]["c"][0];
+
+        console.log(" for " + _skill,_personality);
 
         totalSkill += _skill;
         totalPersonality += _personality;
       }else{
         console.log(err);
       }
-    })
-  }
-  console.log(totalSkill,totalPersonality);
-  //tokenContract.getDetailOfToken_USER(_tokenId, function(err,result){
-  //  if(!err){
-  //    let resSkill = result[0]["c"][0];
-  //    let resPersonality = result[1]["c"][0];
-  //    console.log("skill is "+ resSkill + ", personallity is " + resPersonality);
-  //    return resSkill, resPersonality;
-  //  }else{
-  //    console.log(err);
-  //  }
-  //})
+    });
+  };
+
+  console.log("Finally" + totalSkill,totalPersonality);
 }

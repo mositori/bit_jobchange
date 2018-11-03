@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html land="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>bit-jobchange</title>
+        <!-- loading css -->
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <!-- loading jquery and main.js -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="./js/main.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-logo">Bit転職</div>
+            <div class="header-menu">
+                <ul>
+                    <li>履歴作成(法人のみ)</li>
+                    <li>コイン送付</li>
+                    <li>マイページ</li>
+                </ul>
+            </div>
+        </header>
+        
+        <h3>法人トークンの作成</h3>
+        <form name="param" action="#">
+            <p>宛先</p>
+            <input type="text" id="_to" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
+            <p>イベントID</p>
+            <input type ="text" id="_eventId">
+            <p>Skill</p>
+            <input type="text" id="_skill">
+            <p>Personality</p>
+            <input type="text" id="_personality">
+            <p>Date</p>
+            <input type="text" id="_date">
+
+            <input type="button" value="Mint & Transfer" onClick="mintAndTransfer()">
+        </form>
+
+
+        <h3>現在取得している法人トークンの表示</h3>
+
+        <div id="corpToken-eventId">イベント</div>
+        <div id="corpToken-skill">スキル</div>
+        <div id="corpToken-personality">パーソナリティ</div>
+        <div id="corpToken-date">日付</div>
+
+        <input type="button" value="Get Detail of CorpToken" onclick="getDetailOfToken(0)">
+
+
+        <div class="tokens">
+        </div>
+
+
+        <h3>ピア評価トークンの作成</h3>
+        <form name="param" action="#">
+            <p>宛先</p>
+            <input type="text" id="_toUSER" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
+            <p>Skill</p>
+            <input type="text" id="_skillUSER">
+            <p>Personality</p>
+            <input type="text" id="_personalityUSER">
+            <input type="button" value="Mint & Transfer" onClick="mintAndTransfer_USER()">
+        </form>
+
+    </body>
+</html>
