@@ -6,20 +6,25 @@ let tokenContract;
 let corpTokenContract;
 let userAccount = "";
 let guestAddress = "";
-let idToCompanyName = {"0x1dFb73D1f3117401b240d2F1879f3D1ff6948f29":"EMURGO"}
+let idToCompanyName = {"0x1dfb73d1f3117401b240d2f1879f3d1ff6948f29":"EMURGO"}
 
-let idsTemp;
+let before;
 
+
+// setIntervals
 var accountInterval = setInterval(function(){
   if(web3js.eth.accounts[0] !== userAccount){
     userAccount = web3js.eth.accounts[0];
   }
-},100)
+},100);
 
 var refreshTokenDetail = setInterval(function(){
-  getTokenId(userAccount, getDetailOfToken_);
-},1000)
+  getTokenId("0xE624B1e717466a13869Be9dbb7c3e4637a88B01E", getDetailOfToken_);
+},500);
 
+
+
+// Initialize
 init();
 
 // defining function
@@ -75,6 +80,10 @@ function init(){
 
 
 
+
+
+
+
 // Functions based on CorpToken.sol
 // mintAndTransfer
 function mintAndTransfer(){
@@ -114,10 +123,11 @@ function mintAndTransfer(){
 //  return resposne;
 //}
 
+
+// getting CorpTokenId
 function getTokenId(_owner,callback){
   corpTokenContract.getToken(_owner, (err,res) => {
     if(!err){
-      console.log(res);
       callback(res);
     }else{
       console.log(err);
@@ -125,30 +135,31 @@ function getTokenId(_owner,callback){
   })
 }
 
+// To repeat getDetailOfToken
 function getDetailOfToken_(ids){
-  if(idsTemp !== ids){
+  console.log(ids.length !== before);
+  if(ids.length !== before){
     $(".tokens").empty();
     for(id of ids){
       getDetailOfToken(id);
-    }
+    };
   }
-  idsTemp = ids;
+  before = ids.length;
 }
 
 
-//return the token's contents
+//return UserToken property
 function getDetailOfToken(_tokenId){
   corpTokenContract.getDetailOfToken(_tokenId, (err,res) => {
     if(!err){
-      const _from = res[0];
-      const _eventId = res[1];
-      const _skill = res[2];
-      const _personality = res[3];
-      const _date = res[4];
-      const _company = idToCompanyName[_from];
-      if(_eventId == 0){
-
-      }if(_eventId == 2){
+      let _from = res[0];
+      let _eventId = res[1];
+      let _skill = res[2];
+      let _personality = res[3];
+      let _date = res[4];
+      let _company = idToCompanyName[_from];
+      console.log(_from, _company);
+      if(_eventId == 2){
         $(".tokens").append(`<div class="token">
           <ul>
             <li div class="skill"> Skill: ${_skill} </li>
@@ -158,21 +169,27 @@ function getDetailOfToken(_tokenId){
             <li div class="event"> Event: ${_eventId} </li>
           </ul>
         </div>`);
+        console.log("append は遠てる")
+      }else{
+        console.log("eventId error")
       }
-
       //document.getElementById("corpToken-eventId").textContent = _eventId;
       //document.getElementById("corpToken-skill").textContent = _skill;
       //document.getElementById("corpToken-personality").textContent = _personality;
       //document.getElementById("corpToken-date").textContent = _date;
     }else{
       console.log(err);
-    }
-  })
+    };
+  });
 }
 
 // Functions based on Token.sol
 
-function mintAndTransfer_USER(_to, _skill, _personality){
+function mintAndTransfer_USER(){
+  const _to = document.getElementById("_toUSER").value;
+  const _skill = document.getElementById("_skillUSER").value;
+  const _personality = document.getElementById("_personalityUSER").value;
+
   tokenContract.mintAndTransfer_USER.sendTransaction(
     _to, _skill, _personality,
     {from: userAccount, gas: 1000000},
@@ -187,38 +204,43 @@ function mintAndTransfer_USER(_to, _skill, _personality){
 }
 
 
-function getToken_USER(_owner){
-  tokenContract.getToken_USER(_owner, function(err,res){
+function getTokenId_USER(_owner, callback){
+  tokenContract.getToken_USER(_owner, (err,res) => {
     if(!err){
-      //console.log(result + "is TokenId");
-      //return result[0];
       console.log(res);
+      callback(res);
     }else{
       console.log(err);
     }
   })
 }
 
-function getDetailOfToken_USER(_tokenId){
-  tokenContract.getDetailOfToken_USER(_tokenId, function(err,result){
-    if(!err){
-      let resSkill = result[0]["c"][0];
-      let resPersonality = result[1]["c"][0];
-      console.log("skill is "+ resSkill + ", personallity is " + resPersonality);
-      return resSkill, resPersonality;
-    }else{
-      console.log(err);
-    }
-  })
-}
-
-function getTotalSkill(_owner){
-  let _tokenIds = getToken_USER(_owner);
+function getDetailOfToken_USER(ids){
   let totalSkill = 0;
   let totalPersonality = 0;
+  console.log(ids);
+  for(id of ids){
+    tokenContract.getDetailOfToken_USER(id, (err,res) => {
+      if(!err){
+        let _skill = res[0];
+        let _personality = [1];
 
-  for(let i of _tokenIds){
-    totalSkill, totalPersonality += getDetailOfToken_USER(i);
+        totalSkill += _skill;
+        totalPersonality += _personality;
+      }else{
+        console.log(err);
+      }
+    })
   }
-  console.log(totalSkill, totalPersonality);
+  console.log(totalSkill,totalPersonality);
+  //tokenContract.getDetailOfToken_USER(_tokenId, function(err,result){
+  //  if(!err){
+  //    let resSkill = result[0]["c"][0];
+  //    let resPersonality = result[1]["c"][0];
+  //    console.log("skill is "+ resSkill + ", personallity is " + resPersonality);
+  //    return resSkill, resPersonality;
+  //  }else{
+  //    console.log(err);
+  //  }
+  //})
 }
