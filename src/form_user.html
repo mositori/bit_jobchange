@@ -2,7 +2,7 @@
 <html land="ja">
   <head>
     <meta charset="UTF-8">
-    <title>履歴登録フォーム</title>
+    <title>bit-jobchange</title>
 
         <!-- loading css -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -13,8 +13,6 @@
   </head>
 
   <body>
-    <div id="test">0</div>
-
     <header>
       <div class="header-logo">Bit転職</div>
         <div class="header-menu">
@@ -27,7 +25,7 @@
       </div>
     </header>
 
-    <!-- [注意] これは「履歴登録用」フォームです。mintAndTransfer()注意 -->
+    <!-- これは「ピア評価用」フォームです。メソッドの全てにUSERが付いていることを確認。 -->
     <!-- トークン情報入力フォーム -->
     <div class="form">
       <div class="token-title"> 履歴入力 </div>
@@ -42,7 +40,7 @@
           <p class="item">Personality</p>
           <input type="text" id="_personalityUSER">
 
-          <input type="button" value="Mint & Transfer" onClick="mintAndTransfer()" class="send-button">
+          <input type="button" value="Mint & Transfer" onClick="mintAndTransfer_USER()" class="send-button">
       </form>
     </div>
 

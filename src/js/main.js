@@ -216,31 +216,40 @@ function getTokenId_USER(_owner, callback){
   });
 }
 
+
+var _tempSkill=[];
+var _tempPersonality=[];
+
 function getDetailOfToken_USER(ids){
   let totalSkill = 0;
   let totalPersonality = 0;
   let _skill = 0;
   let _personality = 0;
   console.log(ids);
-
+  
   for(id of ids){
     id_ = id["c"][0];
     tokenContract.getDetailOfToken_USER(id_, (err,res) => {
       if(!err){
-        console.log("res"+ res);
-
         _skill = res[0]["c"][0];
         _personality = res[1]["c"][0];
-
-        console.log(" for " + _skill,_personality);
-
-        totalSkill += _skill;
-        totalPersonality += _personality;
+        _tempSkill.push(_skill);
+        _tempPersonality.push(_personality);
       }else{
         console.log(err);
       }
     });
   };
-
-  console.log("Finally" + totalSkill,totalPersonality);
 }
+
+function displayTotalProperty(){
+  getTokenId_USER()
+}
+
+
+// optional
+var sum  = function(arr) {
+  return arr.reduce(function(prev, current, i, arr) {
+      return prev+current;
+  });
+};
