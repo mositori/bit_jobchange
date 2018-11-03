@@ -242,9 +242,7 @@ function getDetailOfToken_USER(ids){
   };
 }
 
-function displayTotalProperty(){
-  getTokenId_USER()
-}
+
 
 
 // optional
