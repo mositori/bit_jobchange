@@ -216,9 +216,8 @@ function getTokenId_USER(_owner, callback){
   });
 }
 
-
-var _tempSkill=[];
-var _tempPersonality=[];
+let _tempSkill=[];
+let _tempPersonality=[];
 
 function getDetailOfToken_USER(ids){
   let totalSkill = 0;
@@ -242,6 +241,16 @@ function getDetailOfToken_USER(ids){
   };
 }
 
+function displayTotal(){
+  let _owner = document.getElementById("_toUSER").value;
+  console.log(_owner);
+  getTokenId_USER(_owner, getDetailOfToken_USER);
+  let totalSkill = sum(_tempSkill);
+  let totalPersonality= sum(_tempPersonality);
+  console.log(totalSkill);
+  $(".total-skill").text(totalSkill);
+  $(".total-personality").text(totalPersonality);
+}
 
 
 

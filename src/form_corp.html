@@ -10,6 +10,9 @@
         <!-- loading jquery and main.js -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="./js/main.js" type="text/javascript"></script>
+    <script>
+
+    </script>
   </head>
 
   <body>
@@ -36,11 +39,15 @@
           <p class="item">To</p>
           <input type="text" id="_toUSER" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
 
-          <p class="item">Skill</p>
+          <p class="item">EventId</p> <!-- 未変更！ -->
           <input type="text" id="_skillUSER">
 
-          <p class="item">Personality</p>
+          <p class="item">Date</p>
           <input type="text" id="_personalityUSER">
+
+          <p class="total-skill">0</p>
+          <p class="total-personality">0</p>
+          <input type="button" onclick="displayTotal()">
 
           <input type="button" value="Mint & Transfer" onClick="mintAndTransfer()" class="send-button">
       </form>
