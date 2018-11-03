@@ -9,7 +9,7 @@ let guestAddress = "";
 let idToCompanyName = {"0x1dfb73d1f3117401b240d2f1879f3d1ff6948f29":"EMURGO"}
 
 let before;
-
+let events = {0:"入社", 1:"退社"};
 
 // setIntervals
 var accountInterval = setInterval(function(){
@@ -17,11 +17,11 @@ var accountInterval = setInterval(function(){
   if(web3js.eth.accounts[0] !== userAccount){
     userAccount = web3js.eth.accounts[0];
   };
-},500);
+},300);
 
 var refreshTokenDetail = setInterval(function(){
   getTokenId("0xE624B1e717466a13869Be9dbb7c3e4637a88B01E", getDetailOfToken_);
-},500);
+},300);
 
 
 
@@ -91,8 +91,8 @@ function mintAndTransfer(){
   
   const _to = document.getElementById("_to").value;
   const _eventId = document.getElementById("_eventId").value;
-  const _skill = document.getElementsByClassName("total-skill").value;
-  const _personality = document.getElementsByClassName("total-personality").value;
+  const _skill = totalSkill;
+  const _personality = totalPersonality;
   const _date = document.getElementById("_date").value;
 
   corpTokenContract.mintAndTransfer.sendTransaction(
@@ -154,24 +154,34 @@ function getDetailOfToken(_tokenId){
     if(!err){
       let _from = res[0];
       let _eventId = res[1];
+      let _event = events[_eventId];
       let _skill = res[2];
       let _personality = res[3];
       let _date = res[4];
       let _company = idToCompanyName[_from];
       console.log(_from, _company);
-      if(_eventId == 2){
+      if(_eventId == 0){
+        $(".tokens").append(`<div class="token">
+        <ul>
+          <li div class="date"> Date: ${_date} </li>
+          <li div class="company"> Company: ${_company} </li>
+          <li div class="event"> Event: ${_event} </li>
+        </ul>
+      </div>`);
+      console.log("入社確認！")
+      }if(_eventId == 1){
         $(".tokens").append(`<div class="token">
           <ul>
             <li div class="skill"> Skill: ${_skill} </li>
             <li div class="personality"> Personality: ${_personality} </li>
             <li div class="date"> Date: ${_date} </li>
             <li div class="company"> Company: ${_company} </li>
-            <li div class="event"> Event: ${_eventId} </li>
+            <li div class="event"> Event: ${_event} </li>
           </ul>
         </div>`);
-        console.log("append は遠てる")
+        console.log("退社おつかれ！");
       }else{
-        console.log("eventId error")
+        console.log("なんだお前のeventIDは！！0:入社,1:退社やで！")
       }
       //document.getElementById("corpToken-eventId").textContent = _eventId;
       //document.getElementById("corpToken-skill").textContent = _skill;
@@ -241,12 +251,14 @@ function getDetailOfToken_USER(ids){
 function displayTotal(){
   let _owner = document.getElementById("_to").value;
   getTokenId_USER(_owner, getDetailOfToken_USER);
-  let totalSkill = sum(_tempSkill);
-  let totalPersonality= sum(_tempPersonality);
+  
+  totalSkill = sum(_tempSkill);
+  totalPersonality= sum(_tempPersonality);
   $(".total-skill").text(totalSkill);
   $(".total-personality").text(totalPersonality);
 }
-
+let totalSkill = 0;
+let totalPersonality = 0;
 
 
 // optional
