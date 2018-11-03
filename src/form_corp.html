@@ -11,6 +11,9 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="./js/main.js" type="text/javascript"></script>
     <script>
+      setInterval(function(){
+        displayTotal();
+      },3000)
 
     </script>
   </head>
@@ -37,13 +40,13 @@
       <form name="param" action="#">
       <div class=""></div>
           <p class="item">To</p>
-          <input type="text" id="_toUSER" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
+          <input type="text" id="_to" value="0xE624B1e717466a13869Be9dbb7c3e4637a88B01E">
 
           <p class="item">EventId</p> <!-- 未変更！ -->
-          <input type="text" id="_skillUSER">
+          <input type="text" id="_eventId">
 
           <p class="item">Date</p>
-          <input type="text" id="_personalityUSER">
+          <input type="text" id="_date">
 
           <p class="total-skill">0</p>
           <p class="total-personality">0</p>

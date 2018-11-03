@@ -17,7 +17,7 @@ var accountInterval = setInterval(function(){
   if(web3js.eth.accounts[0] !== userAccount){
     userAccount = web3js.eth.accounts[0];
   };
-},100);
+},500);
 
 var refreshTokenDetail = setInterval(function(){
   getTokenId("0xE624B1e717466a13869Be9dbb7c3e4637a88B01E", getDetailOfToken_);
@@ -91,8 +91,8 @@ function mintAndTransfer(){
   
   const _to = document.getElementById("_to").value;
   const _eventId = document.getElementById("_eventId").value;
-  const _skill = document.getElementById("_skill").value;
-  const _personality = document.getElementById("_personality").value;
+  const _skill = document.getElementsByClassName("total-skill").value;
+  const _personality = document.getElementsByClassName("total-personality").value;
   const _date = document.getElementById("_date").value;
 
   corpTokenContract.mintAndTransfer.sendTransaction(
@@ -138,7 +138,6 @@ function getTokenId(_owner,callback){
 
 // To repeat getDetailOfToken
 function getDetailOfToken_(ids){
-  console.log(ids.length !== before);
   if(ids.length !== before){
     $(".tokens").empty();
     for(id of ids){
@@ -208,7 +207,6 @@ function mintAndTransfer_USER(){
 function getTokenId_USER(_owner, callback){
   tokenContract.getToken_USER(_owner, (err,res) => {
     if(!err){
-      console.log(res);
       callback(res);
     }else{
       console.log(err);
@@ -216,15 +214,14 @@ function getTokenId_USER(_owner, callback){
   });
 }
 
-let _tempSkill=[];
-let _tempPersonality=[];
+let _tempSkill;
+let _tempPersonality;
 
 function getDetailOfToken_USER(ids){
-  let totalSkill = 0;
-  let totalPersonality = 0;
+  _tempSkill=[];
+  _tempPersonality=[];
   let _skill = 0;
   let _personality = 0;
-  console.log(ids);
   
   for(id of ids){
     id_ = id["c"][0];
@@ -242,12 +239,10 @@ function getDetailOfToken_USER(ids){
 }
 
 function displayTotal(){
-  let _owner = document.getElementById("_toUSER").value;
-  console.log(_owner);
+  let _owner = document.getElementById("_to").value;
   getTokenId_USER(_owner, getDetailOfToken_USER);
   let totalSkill = sum(_tempSkill);
   let totalPersonality= sum(_tempPersonality);
-  console.log(totalSkill);
   $(".total-skill").text(totalSkill);
   $(".total-personality").text(totalPersonality);
 }
