@@ -105,6 +105,48 @@ border-bottom: dotted 1px #535aaa;
   right: 0;
 }
 
+
+.name-area > .address_{
+  position: relative;
+  line-height: 1.4;
+  padding:0.25em 1em;
+  display: inline-block;
+  top:0;
+  height:20px;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+.name-area > .address_:before,.name-area > .address_:after{
+  position: absolute;
+  top: 0;
+  content:'';
+width: 8px;
+height: 100%;
+display: inline-block;
+}
+
+.name-area > .address_:before{
+  border-top: dotted 1px #535aaa;
+border-left: dotted 1px #535aaa;
+border-bottom: dotted 1px #535aaa;
+  left: 0;
+}
+
+.name-area > .address_:after{
+  content: '';
+  border-top: dotted 1px #535aaa;
+  border-right: dotted 1px #535aaa;
+  border-bottom: dotted 1px #535aaa;
+  right: 0;
+}
+
+
+
+
+
+
+
 .other-prof{
   display: flex;
   flex-direction: row;
@@ -172,12 +214,24 @@ div.work-experience-title{
 }
 
 .item{
-  text-align::left;
+  text-align:left;
   margin-bottom: 3px;
   margin-left: 5%;
 }
 
 input{
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+p.total-skill {
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+p.total-personality {
   width: 90%;
   margin-right: 5%;
   margin-left: 5%;
@@ -208,8 +262,17 @@ input{
   border-bottom: dotted 1px #535aaa;
   margin: 10px;
 }
-.token > ul > li.personality {
-  margin-right:1000px;
+.token > ul >div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.token > ul >div > li {
+  border-bottom: dotted 1px #535aaa;
+  margin: 10px;
 }
 
 body > p {

@@ -171,12 +171,16 @@ function getDetailOfToken(_tokenId){
       console.log("入社確認！")
       }if(_eventId == 1){
         $(".tokens").append(`<div class="token">
-          <ul>
-            <li div class="skill"> Skill: ${_skill} </li>
-            <li div class="personality"> Personality: ${_personality} </li>
+          <ul>        
+          <div>
             <li div class="date"> Date: ${_date} </li>
             <li div class="company"> Company: ${_company} </li>
             <li div class="event"> Event: ${_event} </li>
+            </div>
+            <div>
+            <li div class="skill"> Skill: ${_skill} </li>
+            <li div class="personality"> Personality: ${_personality} </li>
+          </div>
           </ul>
         </div>`);
         //$(".token").css({"font-size":"24px", "display":"inline-flex", "flex-direction":"row"});
