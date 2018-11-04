@@ -39,46 +39,193 @@ header {
   color:#FAFAFA;
 }
 
-.token {
-  font-size: 24px;
-  display: inline-flex;
-  flex-direction: row;
-}
-
 li {
   list-style: none;
 }
 
 .profile{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;;
   margin-left:20px;
+  margin-bottom: 20px;
+  border: solid grey 3px;
+  width: 70%;
+  margin-right: 15%;
+  margin-left: 15%;
+  padding: 20px;
+  border-radius: 20px;
+  background: #BCC8DB;
 }
 .name-area{
   display: flex;
   flex-direction: row;
+  background: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-.name-area > div{
-  margin:5px;
-}
-.portrait{
-  width:300px;
-  height:300px;
-  margin:10px;
-}
-.description > li{
+.name-area > .name{
+  font-size: 32px;
   margin: 5px;
-  padding: 5px;
-  border: solid grey 3px;
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #5d627b;/*左線*/
+}
+.name-area > .address{
+  position: relative;
+  line-height: 1.4;
+  padding:0.25em 1em;
+  display: inline-block;
+  top:0;
+  height:20px;
+  margin-top: 20px;
+  margin-left: 250px;
 }
 
+.name-area > .address:before,.name-area > .address:after{
+  position: absolute;
+  top: 0;
+  content:'';
+width: 8px;
+height: 100%;
+display: inline-block;
+}
+
+.name-area > .address:before{
+  border-top: dotted 1px #535aaa;
+border-left: dotted 1px #535aaa;
+border-bottom: dotted 1px #535aaa;
+  left: 0;
+}
+
+.name-area > .address:after{
+  content: '';
+  border-top: dotted 1px #535aaa;
+  border-right: dotted 1px #535aaa;
+  border-bottom: dotted 1px #535aaa;
+  right: 0;
+}
+
+.other-prof{
+  display: flex;
+  flex-direction: row;
+}
+
+.portrait{
+  width:250px;
+  height:250px;
+  margin:15px;
+  margin-left: 20px;
+  display: inline;
+}
+.description{
+  width: 95%;
+  margin: 10px;
+}
+.description > li{
+  font-size: 20px;
+  padding: 0.5em 1em;
+  margin: 10px;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.work-experience{
+  display: flex;
+  flex-direction: column;;
+  margin-left:20px;
+  border: solid grey 3px;
+  width: 70%;
+  margin-right: 15%;
+  margin-left: 15%;
+  padding: 20px;
+  border-radius: 20px;
+  background: #BCC8DB;
+}
+.work-experience > div{
+  background: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+div.work-experience-title{
+  font-size: 32px;
+  margin: 5px;
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #5d627b;/*左線*/
+}
 .form{
   margin:auto;
-  text-align: center;
   width: 300px;
-  border: solid grey 3px;
+  border: solid #E7E8E2 3px;
   padding: 10px;
+  border-radius: 20px;
+  box-shadow: 4px 4px #B2B2B2;
 }
 .token-title{
   text-align: center;
+  color: #4B5A66;/*文字色*/
+  padding: 0.3em 0;/*上下の余白*/
+  border-top: solid 3px #4B5A66;/*上線*/
+  border-bottom: solid 3px #4B5A66;/*下線*/
+}
+
+.item{
+  text-align::left;
+  margin-bottom: 3px;
+  margin-left: 5%;
+}
+
+input{
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.token {
+  font-size: 18px;
+  display: inline-flex;
+  flex-direction: row;
+  border: solid 1px #000000;
+  border-radius: 10px;
+  margin-top:10px;
+}
+.tokens{
+  display: flex;
+  flex-direction: column;
+}
+.token > ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.token > ul > li {
+  border-bottom: dotted 1px #535aaa;
+  margin: 10px;
+}
+.token > ul > li.personality {
+  margin-right:1000px;
+}
+
+body > p {
+  margin:auto;
+  margin-top: 20px;
+  background: white;
+  width: 150px;
+  background: #4B5A66;
+  color: white;
+  padding: 10px;
+}
+body > div.address{
+  margin:auto;
+  background: white;
+  width: 400px;
+  padding: 10px;
+  border: solid #E7E8E2 3px;
+  box-shadow: 4px 4px #B2B2B2;
 }

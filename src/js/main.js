@@ -179,6 +179,10 @@ function getDetailOfToken(_tokenId){
             <li div class="event"> Event: ${_event} </li>
           </ul>
         </div>`);
+        //$(".token").css({"font-size":"24px", "display":"inline-flex", "flex-direction":"row"});
+        //$(".tokens").css({"display":"flex", "flex-direction":"column"});
+        //$(".tokens > ul").css({"display":"flex", "flex-direction":"row", "padding": "5px", "margin-left":"20px", "margin-top":"0px", "margin-bottom":"0px"});
+        //$(".tokens > ul > li").css({"border-bottom":"dotted 1px #535aaa", "margin":"10px"})
         console.log("退社おつかれ！");
       }else{
         console.log("なんだお前のeventIDは！！0:入社,1:退社やで！")
